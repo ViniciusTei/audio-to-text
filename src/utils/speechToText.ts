@@ -17,7 +17,12 @@ async function speechToText(audio: File) {
     )
 
     const data = await response.json()
-    return data
+
+    if (data.error) {
+      throw new Error(data.error)
+    }
+
+    return data.text
   } catch (error) {
     console.log('Error while fetching openai', error)  
     throw error
