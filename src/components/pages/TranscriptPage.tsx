@@ -1,8 +1,9 @@
 import React, { useReducer, useState } from 'react'
 
 import { UploadFile } from 'components/domain'
-import openai from 'lib/openai'
 import { Loading } from 'components/ui'
+import openai from 'lib/openai'
+import supabse from 'lib/api'
 
 const { speechToText } = openai
 
@@ -10,14 +11,27 @@ function TranscriptPage() {
   const [text, setText] = useState<string | null>(null)
   const [loading, toggleLoading] = useReducer(prev => !prev, false)
 
+  async function uploadTextToDatabase(value: string) {
+    const { data, error } = await supabse.from('Transcriptions').insert([
+      { text_transcript: value }
+    ])
+
+    if (error) {
+      throw error
+    }
+
+    console.log('Data from database', data)
+  }
+
   async function handleTranscriptFile(file: File) {
     try {
       toggleLoading()
       const transcriptedText = await speechToText(file)
       console.log(transcriptedText)
       setText(transcriptedText)
+      await uploadTextToDatabase(transcriptedText)
     } catch (error) {
-      console.log('Error fetching transcripted text', error)  
+      console.log('Error with transcripted text', error)  
     } finally {
       toggleLoading()
     }
