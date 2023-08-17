@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "basePath": "src"
+    "baseUrl": "src"
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
