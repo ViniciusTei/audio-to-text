@@ -10,7 +10,7 @@ async function speechToText(audio: File) {
       {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
         },
         body: formData
       }
