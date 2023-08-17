@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { LoginButton } from 'components/domain'
 import { HomePage, LoginPage, ProfilePage } from 'components/pages'
+import TranscriptPage from 'components/pages/TranscriptPage'
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -72,6 +73,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/profile" element={<ProfilePage/>} />
+      <Route path="/audio" element={<TranscriptPage/>} />
       <Route path="/" element={<HomePage/>} />
     </Routes>
   </main>
