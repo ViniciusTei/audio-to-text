@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { LoginButton } from 'components/domain'
 import { HomePage, LoginPage, ProfilePage } from 'components/pages'
 import TranscriptPage from 'components/pages/TranscriptPage'
@@ -30,7 +30,7 @@ function App() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Produto</a>
+            <Link to="/" className="text-sm font-semibold leading-6 text-gray-100">Produto</Link>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Como usar?</a>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Preços</a>
             <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Sobre</a>
