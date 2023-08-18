@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 function HomePage() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+    <main className="flex min-h-screen flex-col items-center justify-between px-12">
+      <div className="relative isolate lg:px-8">
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-40">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">Transforme seus áudios em texto utilizando inteligência artificial</h1>
             <p className="mt-6 text-lg leading-8 text-gray-300">
