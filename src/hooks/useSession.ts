@@ -16,12 +16,32 @@ function useSession() {
       .then(() => setSession(null))
   }
 
+
+  async function handleUserLoged(user: Session) {
+    const { data, error } = await supabase.functions('new-user', {
+      body: { user_id: user.user.id, user_email: user.user.email }
+    })
+
+    if (error) {
+      throw new Error(error.message)
+    }
+
+    console.log('stripe', data)
+  }
+
   useEffect(() => {
     supabase.auth.getSession()
       .then(({ data: { session }}) => {
         setSession(session)
       })
   }, [])
+
+  useEffect(() => {
+    if (currSession) {
+      console.log('session', currSession)
+      handleUserLoged(currSession) 
+    }
+  }, [currSession])
   
   return { session: currSession, logOut: handleLogout }
 }

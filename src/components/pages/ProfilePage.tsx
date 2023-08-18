@@ -37,8 +37,6 @@ function ProfilePage() {
       
   }, [session])
 
-  console.log(trasncriptions)
-
   if (!session) {
     return (
       <div>Not authenticated</div>
