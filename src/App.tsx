@@ -12,10 +12,10 @@ function App() {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only text-gray-100">Audio Para Texto</span>
-              <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
-            </a>
+              <img className="h-8 w-auto" src="https://nnfvmpgnudspenaftses.supabase.co/storage/v1/object/public/audio/logo/ic_audio_xl.png" alt="App Logo" />
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button 
@@ -45,7 +45,7 @@ function App() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only text-gray-100">Audio para texto</span>
-                <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                <img className="h-8 w-auto" src="https://nnfvmpgnudspenaftses.supabase.co/storage/v1/object/public/audio/logo/ic_audio_xl.png" alt="App Logo" />
               </a>
               <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-200" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 <span className="sr-only">Fechar menu</span>
