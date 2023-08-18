@@ -12,6 +12,7 @@ function LoginPage() {
           supabaseClient={supabse} 
           appearance={{ theme: ThemeSupa }}
           providers={['google']}
+          onlyThirdPartyProviders
         />
       </div>
     </div>
