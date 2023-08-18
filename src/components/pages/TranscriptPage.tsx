@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from 'react'
 
 import { UploadFile } from 'components/domain'
-import { Loading } from 'components/ui'
+import { Card, Loading } from 'components/ui'
 import openai from 'lib/openai'
 import supabse from 'lib/api'
 
@@ -61,7 +61,14 @@ function TranscriptPage() {
         </div>
       )}
 
-      {text && text}
+      {text && (
+        <Card 
+          title="Texto transcrito"
+          text={text}
+          to="audio"
+          toText="Transcrever outro áudio"
+        />
+      )}
 
       <div className="flex justify-around mt-8">
         <p className="max-w-lg">Transcreva seu áudio em texto. Use a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.</p>
