@@ -18,11 +18,14 @@ function useSession() {
       .then(() => setSession(null))
   }
   
-  async function handleLogin() {
+  async function handleLogin(redirect?: string) {
     try {
       toggleLoading()
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
+        options: {
+          redirectTo: redirect ?? window.location.origin ?? ''
+        }
       })
 
       if (error) {
