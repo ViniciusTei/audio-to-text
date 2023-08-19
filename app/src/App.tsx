@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { HomePage, LoginPage, ProfilePage, TranscriptPage } from 'components/pages'
 import { AppHeader } from 'components/domain'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   
@@ -15,6 +16,8 @@ function App() {
       <Route path="/audio" element={<TranscriptPage/>} />
       <Route path="/" element={<HomePage/>} />
     </Routes>
+
+    <Analytics />
   </main>
   )
 }
