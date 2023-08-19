@@ -1,18 +1,20 @@
-import React, { useReducer, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 
 import { UploadFile } from 'components/domain'
 import { Card, Loading } from 'components/ui'
 import openai from 'lib/openai'
-import supabse from 'lib/api'
+import supabase from 'lib/api'
+import useSession from 'hooks/useSession'
 
 const { speechToText } = openai
 
 function TranscriptPage() {
   const [text, setText] = useState<string | null>(null)
   const [loading, toggleLoading] = useReducer(prev => !prev, false)
+  const { session, logIn } = useSession()
 
   async function uploadTextToDatabase(value: string) {
-    const { data, error } = await supabse.from('Transcriptions').insert([
+    const { data, error } = await supabase.from('Transcriptions').insert([
       { text_transcript: value }
     ])
 
@@ -21,21 +23,93 @@ function TranscriptPage() {
     }
 
     console.log('Data from database', data)
+
   }
 
-  async function handleTranscriptFile(file: File) {
+  async function transcriptAudioFile() {
     try {
       toggleLoading()
-      const transcriptedText = await speechToText(file)
+      const audioFileName = localStorage.getItem('audioFileName')
+
+      if (!audioFileName) {
+        throw new Error('Audio file name not found')
+      }
+
+      const { data: file, error } = await supabase.storage.from('audio').download(audioFileName as string)
+
+      if (error) {
+        throw error
+      }
+
+      const transcriptedText = await speechToText(blobToFile(file, audioFileName))
       console.log(transcriptedText)
       setText(transcriptedText)
       await uploadTextToDatabase(transcriptedText)
+      await supabase.storage.from('audio').remove([audioFileName])
     } catch (error) {
       console.log('Error with transcripted text', error)  
     } finally {
       toggleLoading()
     }
   }
+
+  async function handleTranscriptFile(file: File) {
+    try {
+      toggleLoading()
+
+      if (!session) {
+        logIn()
+        return
+      }
+
+      const audioFileName =`audio-files/${session.user.id}-${file.name}`
+
+      const { error: errorUpload } = await supabase.storage
+        .from('audio')
+        .upload(audioFileName, file)
+
+
+      if (errorUpload) {
+        throw errorUpload
+      }
+
+      localStorage.setItem('audioFileName', audioFileName)
+
+      //call stripe checkout
+      const { data, error } = await supabase.functions.invoke('checkout', {
+        body: {
+          price_id: 'price_1Ngn1wHQe8oRrALNqHgwz4ZG'
+        }
+      })
+
+      if (error) {
+        throw error
+      }
+
+      if ((data as any)?.session.url) {
+        window.location.replace((data as any)?.session.url)
+      }
+    } catch (error) {
+      console.log('Error with file', error)  
+    } finally {
+      toggleLoading()
+    }
+  }
+  
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+
+    if (query.get("success")) {
+      transcriptAudioFile()
+    }
+
+    if (query.get("canceled")) {
+      alert(
+        "Algo deu errado com sua compra!"
+      );
+    }
+  }, []);
 
   return (
     <div className="w-full px-10 text-center">
@@ -83,5 +157,12 @@ function TranscriptPage() {
     </div>
   )
 }
+
+function blobToFile(theBlob: Blob, fileName: string) {
+  return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
+}
+
+
+
 
 export default TranscriptPage
