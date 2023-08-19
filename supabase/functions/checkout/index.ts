@@ -26,8 +26,8 @@ serve(async (req) => {
         }
       ],
       mode: 'payment',
-      success_url: 'http://localhost:5173/audio?success=true',
-      cancel_url: 'http://localhost:5173/audio?cancel=true',
+      success_url: 'https://audio-to-text-pink.vercel.app/audio?success=true',
+      cancel_url: 'https://audio-to-text-pink.vercel.app/audio?cancel=true',
     })
 
     return new Response(JSON.stringify({ session }), {
