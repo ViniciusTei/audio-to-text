@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { Session } from '@supabase/supabase-js'
-import supabase from 'lib/api'
+
+import useSession from 'hooks/useSession'
 
 function LoginButton() {
-  const [currSession, setSession] = useState<Session | null>(null)
-
-
-  function handleLogout() {
-    supabase.auth.signOut()
-      .then(() => setSession(null))
-  }
-
-  useEffect(() => {
-    supabase.auth.getSession()
-      .then(({ data: { session }}) => {
-        setSession(session)
-      })
-  }, [])
+  const { session: currSession, logOut } = useSession()
   
   if (currSession) {
     return (
@@ -30,7 +17,7 @@ function LoginButton() {
           />
 
           {currSession.user.user_metadata.name}
-          <span role="button" className="text-4xl ml-4 cursor-pointer" title="Sair" onClick={handleLogout}>&#10162;</span>
+          <span role="button" className="text-4xl ml-4 cursor-pointer" title="Sair" onClick={logOut}>&#10162;</span>
         </div>
 
       </div>
