@@ -65,8 +65,9 @@ function TranscriptPage() {
         <Card 
           title="Texto transcrito"
           text={text}
-          to="audio"
-          toText="Transcrever outro áudio"
+          button
+          buttonText="Transcrever outro áudio"
+          buttonClick={() => setText(null)}
         />
       )}
 
