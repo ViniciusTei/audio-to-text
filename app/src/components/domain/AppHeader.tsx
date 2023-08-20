@@ -29,7 +29,7 @@ function AppHeader() {
         <div className="hidden lg:flex lg:gap-x-12">
           <Link to="/" className="text-sm font-semibold leading-6 text-gray-100">Produto</Link>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Como usar?</a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Preços</a>
+          <a href="#pricing" className="text-sm font-semibold leading-6 text-gray-100">Preços</a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Sobre</a>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
