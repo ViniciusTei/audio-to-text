@@ -32,9 +32,9 @@ function AppHeader() {
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
-          <Link to="/" className="text-sm font-semibold leading-6 text-gray-100">Produto</Link>
+          <Link to="/audio" className="text-sm font-semibold leading-6 text-gray-100">Transcrever</Link>
           <Link to="/#pricing" className="text-sm font-semibold leading-6 text-gray-100">Preços</Link>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Sobre</a>
+          <Link to={{ pathname: '/', hash: '#about' }} className="text-sm font-semibold leading-6 text-gray-100">Sobre</Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <LoginButton />
@@ -58,9 +58,9 @@ function AppHeader() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <Link to="/" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Produto</Link>
+                <Link to="/audio" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Transcrever</Link>
                 <Link to="/#pricing" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Preços</Link>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Sobre</a>
+                <Link to="/#about" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Sobre</Link>
               </div>
               <div className="py-6">
                 <LoginButton />

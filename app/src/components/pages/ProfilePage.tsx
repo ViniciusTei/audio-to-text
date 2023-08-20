@@ -3,7 +3,6 @@ import { AiFillPlusCircle, AiFillMinusCircle, AiOutlineDownload } from 'react-ic
 import useSession from 'hooks/useSession'
 import supabase from 'lib/api'
 
-
 type UserMetada = {
   avatar_url: string
   name: string
