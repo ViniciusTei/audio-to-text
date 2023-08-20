@@ -14,7 +14,7 @@ function TranscriptPage() {
   const { session, logIn } = useSession()
 
   async function uploadTextToDatabase(value: string) {
-    const { data, error } = await supabase.from('Transcriptions').insert([
+    const { error } = await supabase.from('Transcriptions').insert([
       { text_transcript: value }
     ])
 
@@ -22,13 +22,25 @@ function TranscriptPage() {
       throw error
     }
 
-    console.log('Data from database', data)
+    const { data, error: customerErro } = await supabase.from('Customer').select('id, credits').eq('user_id', session?.user.id)
 
+    if (customerErro) {
+      throw customerErro
+    }
+
+    await supabase.from('Customer').update({ credits: (data as any)[0].credits - 1 }).eq('id', (data as any)[0].id)
   }
 
-  async function transcriptAudioFile() {
+  async function transcriptAudioFile(addCredits = false) {
     try {
       toggleLoading()
+
+      if (addCredits) {
+        const { data } = await supabase.from('Customer').select('id, credits').eq('user_id', session?.user.id)
+
+        await supabase.from('Customer').update({ credits: (data as any)[0].credits + 10 }).eq('id', (data as any)[0].id)
+      }
+
       const audioFileName = localStorage.getItem('audioFileName')
 
       if (!audioFileName) {
@@ -75,19 +87,28 @@ function TranscriptPage() {
 
       localStorage.setItem('audioFileName', audioFileName)
 
-      //call stripe checkout
-      const { data, error } = await supabase.functions.invoke('checkout', {
-        body: {
-          price_id: 'price_1Ngn1wHQe8oRrALNqHgwz4ZG'
+      const { data: credits } = await supabase.from('Customer').select('credits').eq('user_id', session.user.id)
+
+      const userCredit = credits ? credits[0].credits : 0
+
+      if (userCredit) {
+        //transcript file
+        transcriptAudioFile()
+      } else {
+        //call stripe checkout
+        const { data, error } = await supabase.functions.invoke('checkout', {
+          body: {
+            price_id: 'price_1NhBZjHQe8oRrALNFbnaFHwd'
+          }
+        })
+
+        if (error) {
+          throw error
         }
-      })
 
-      if (error) {
-        throw error
-      }
-
-      if ((data as any)?.session.url) {
-        window.location.replace((data as any)?.session.url)
+        if ((data as any)?.session.url) {
+          window.location.replace((data as any)?.session.url)
+        }
       }
     } catch (error) {
       console.log('Error with file', error)  
@@ -101,7 +122,7 @@ function TranscriptPage() {
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
-      transcriptAudioFile()
+      transcriptAudioFile(true)
     }
 
     if (query.get("canceled")) {
