@@ -145,7 +145,7 @@ function TranscriptPage() {
         />
       )}
 
-      <div className="flex justify-around mt-8">
+      <div className="flex mt-8 flex-col-reverse items-center gap-2 md:flex-row md:justify-around">
         <p className="max-w-lg">Transcreva seu áudio em texto. Use a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.</p>
 
         <ul className="flex flex-col items-start list-disc">
