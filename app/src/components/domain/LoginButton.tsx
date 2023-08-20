@@ -32,7 +32,7 @@ function LoginButton() {
       onClick={() => logIn()} 
       className="text-sm font-semibold leading-6 text-gray-100 flex items-center gap-2"
     >
-      Log in <AiOutlineLogin size="1.2rem"/>
+      Entrar <AiOutlineLogin size="1.2rem"/>
     </button>
   )
 }
