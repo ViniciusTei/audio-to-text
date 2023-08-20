@@ -2,6 +2,8 @@ import React from 'react'
 import { AiFillApi, AiFillDollarCircle, AiFillRead } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
+import { CheckoutButton } from 'components/domain'
+
 function HomePage() {
 
   return (
@@ -12,7 +14,9 @@ function HomePage() {
         </div>
         <div className="mx-auto max-w-2xl py-16 sm:py-20 lg:py-40">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">Transforme seus áudios em texto utilizando inteligência artificial</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">
+              Transforme seus áudios em texto utilizando inteligência artificial
+            </h1>
             <p className="mt-6 text-lg leading-8 text-gray-300">
               Aproveite a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.
             </p>
@@ -59,16 +63,14 @@ function HomePage() {
               <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                 <div className="mx-auto max-w-xs px-8">
                   <p className="text-base font-semibold text-gray-600">Pague um valor mínimo</p>
+                  
                   <p className="mt-6 flex items-baseline justify-center gap-x-2">
                     <span className="text-5xl font-bold tracking-tight text-gray-900">R$1,00</span>
                     <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">BRL</span>
                   </p>
-                  <a
-                    href="#"
-                    className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  >
-                    Compre créditos
-                  </a>
+
+                  <CheckoutButton />
+
                   <p className="mt-6 text-xs leading-5 text-gray-600">
                     Você tem 1 crédito para utilizar ao fazer seu primeiro cadastro. Você pode comprar mais créditos quando quiser.
                   </p>
@@ -131,7 +133,7 @@ function HomePage() {
             </div>
           </div>
         </div>
-    </section>
+      </section>
     </main>
   )
 }
