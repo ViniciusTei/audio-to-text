@@ -6,7 +6,7 @@ function CheckoutButton() {
     //call stripe checkout
     const { data, error } = await supabase.functions.invoke('checkout', {
       body: {
-        price_id: 'price_1NhBZjHQe8oRrALNFbnaFHwd'
+        price_id: import.meta.env.VITE_STRIPE_PRICE_ID,
       }
     })
 

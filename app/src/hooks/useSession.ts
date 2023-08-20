@@ -24,7 +24,7 @@ function useSession() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: redirect ?? window.location.origin ?? ''
+          redirectTo: redirect ?? import.meta.env.VITE_PUBLIC_URL ?? window.location.origin
         }
       })
 
