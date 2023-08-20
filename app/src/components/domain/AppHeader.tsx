@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { LoginButton } from 'components/domain'
 
 function AppHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [location])
   
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -28,8 +33,7 @@ function AppHeader() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           <Link to="/" className="text-sm font-semibold leading-6 text-gray-100">Produto</Link>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Como usar?</a>
-          <a href="#pricing" className="text-sm font-semibold leading-6 text-gray-100">Preços</a>
+          <Link to="/#pricing" className="text-sm font-semibold leading-6 text-gray-100">Preços</Link>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-100">Sobre</a>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -40,10 +44,10 @@ function AppHeader() {
         <div className="fixed inset-0 z-50"></div>
         <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only text-gray-100">Audio para texto</span>
               <img className="h-8 w-auto" src="https://nnfvmpgnudspenaftses.supabase.co/storage/v1/object/public/audio/logo/ic_audio_xl.png" alt="App Logo" />
-            </a>
+            </Link>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-200" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <span className="sr-only">Fechar menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -54,9 +58,8 @@ function AppHeader() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Produto</a>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Como usar?</a>
-                <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Preços</a>
+                <Link to="/" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Produto</Link>
+                <Link to="/#pricing" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Preços</Link>
                 <a href="#" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-100 hover:bg-slate-500">Sobre</a>
               </div>
               <div className="py-6">
