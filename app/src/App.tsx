@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { HomePage, ProfilePage, TranscriptPage } from 'components/pages'
+import { HomePage, PrivacyPage, ProfilePage, TranscriptPage } from 'components/pages'
 import { AppHeader } from 'components/domain'
 import { Analytics } from '@vercel/analytics/react'
 
@@ -11,6 +11,7 @@ function App() {
     <AppHeader />
 
     <Routes>
+      <Route path="/privacidade" element={<PrivacyPage/>} />
       <Route path="/profile" element={<ProfilePage/>} />
       <Route path="/audio" element={<TranscriptPage/>} />
       <Route path="/" element={<HomePage/>} />
