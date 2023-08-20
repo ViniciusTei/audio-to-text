@@ -14,7 +14,7 @@ function TranscriptPage() {
   const { session, logIn } = useSession()
 
   async function uploadTextToDatabase(value: string) {
-    const { error } = await supabase.from('Transcriptions').insert([
+    const { data: text, error } = await supabase.from('Transcriptions').insert([
       { text_transcript: value }
     ])
 
@@ -29,6 +29,8 @@ function TranscriptPage() {
     }
 
     await supabase.from('Customer').update({ credits: (data as any)[0].credits - 1 }).eq('id', (data as any)[0].id)
+    await supabase.from('Transactions')
+      .insert({ type: 'transcription', user_id: (data as any)[0].id, text_id: (text as any).id })
   }
 
   async function transcriptAudioFile(addCredits = false) {
@@ -39,6 +41,8 @@ function TranscriptPage() {
         const { data } = await supabase.from('Customer').select('id, credits').eq('user_id', session?.user.id)
 
         await supabase.from('Customer').update({ credits: (data as any)[0].credits + 10 }).eq('id', (data as any)[0].id)
+        await supabase.from('Transactions')
+          .insert({ type: 'payment', user_id: (data as any)[0].id })
       }
 
       const audioFileName = localStorage.getItem('audioFileName')
