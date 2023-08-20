@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import useSession from 'hooks/useSession'
 
 function LoginButton() {
-  const { session: currSession, logOut } = useSession()
+  const { session: currSession, logOut, logIn } = useSession()
   
   if (currSession) {
     return (
@@ -25,7 +24,7 @@ function LoginButton() {
   }
 
   return (
-    <Link to="login" className="text-sm font-semibold leading-6 text-gray-100">Log in <span aria-hidden="true">&rarr;</span></Link>
+    <button onClick={() => logIn()} className="text-sm font-semibold leading-6 text-gray-100">Log in <span aria-hidden="true">&rarr;</span></button>
   )
 }
 
