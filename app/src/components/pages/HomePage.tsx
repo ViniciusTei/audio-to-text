@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiFillApi, AiFillDollarCircle, AiFillRead, AiOutlineArrowRight } from 'react-icons/ai'
+import { AiFillApi, AiFillDollarCircle, AiFillRead } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
 function HomePage() {

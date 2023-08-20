@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import useSession from 'hooks/useSession'
+import { AiOutlineLogin, AiOutlineLogout } from 'react-icons/ai'
 
 function LoginButton() {
   const { session: currSession, logOut, logIn } = useSession()
@@ -17,7 +18,9 @@ function LoginButton() {
           />
 
           {currSession.user.user_metadata.name}
-          <span role="button" className="text-4xl ml-4 cursor-pointer" title="Sair" onClick={logOut}>&#10162;</span>
+          <span role="button" className="text-4xl ml-4 cursor-pointer" title="Sair" onClick={logOut}>
+            <AiOutlineLogout size="1.2rem" />
+          </span>
         </Link>
 
       </div>
@@ -25,7 +28,12 @@ function LoginButton() {
   }
 
   return (
-    <button onClick={() => logIn()} className="text-sm font-semibold leading-6 text-gray-100">Log in <span aria-hidden="true">&rarr;</span></button>
+    <button 
+      onClick={() => logIn()} 
+      className="text-sm font-semibold leading-6 text-gray-100 flex items-center gap-2"
+    >
+      Log in <AiOutlineLogin size="1.2rem"/>
+    </button>
   )
 }
 
