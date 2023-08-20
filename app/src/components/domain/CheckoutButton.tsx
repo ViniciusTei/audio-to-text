@@ -3,6 +3,9 @@ import supabase from 'lib/api'
 
 function CheckoutButton() {
   async function handleCheckout() {
+    if (!import.meta.env.VITE_STRIPE_PRICE_ID) {
+      throw new Error('Missing Stripe Price ID')
+    }
     //call stripe checkout
     const { data, error } = await supabase.functions.invoke('checkout', {
       body: {
