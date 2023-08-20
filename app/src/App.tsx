@@ -6,7 +6,7 @@ import { Analytics } from '@vercel/analytics/react'
 function App() {
   
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-24">
+    <main className="flex min-h-screen flex-col items-center justify-between lg:px-24">
     
     <AppHeader />
 
