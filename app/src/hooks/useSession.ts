@@ -41,7 +41,6 @@ function useSession() {
   }
 
   async function handleUserLoged() {
-    console.log('user loged')
     const { data: user, error: userError } = await supabase.auth.getUser()
     
     if (userError) {
@@ -62,8 +61,11 @@ function useSession() {
   useEffect(() => {
     supabase.auth.getSession()
       .then(({ data: { session }}) => {
-        handleUserLoged()
         setSession(session)
+
+        if (session) {
+          handleUserLoged()
+        }
       })
   }, [])
 
