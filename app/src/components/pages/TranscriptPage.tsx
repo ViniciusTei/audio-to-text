@@ -112,7 +112,7 @@ function TranscriptPage() {
   }, []);
 
   return (
-    <div className="w-full px-10 text-center">
+    <div className="mt-20 w-full px-10 text-center">
       <h1 className="font-bold text-2xl my-4">Transcrever áudio</h1>
 
       {!loading && !text && <UploadFile onUpload={handleTranscriptFile} />}
