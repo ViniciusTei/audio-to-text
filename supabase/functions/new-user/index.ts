@@ -51,7 +51,7 @@ serve(async (req: Request) => {
     console.log('User not found, creating customer')
     const stripe_customer = await stripe.customers.create({ email: user_email })
 
-    const { error: err } = await supabaseClient.from('Customer').insert({ user_id, stripe_id: stripe_customer.id })
+    const { error: err } = await supabaseClient.from('Customer').insert({ user_id, stripe_id: stripe_customer.id, credits: 1 })
 
     if (err) {
       throw err
