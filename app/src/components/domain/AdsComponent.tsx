@@ -4,7 +4,10 @@ function AdsComponent({ dataAdSlot }: { dataAdSlot: string }) {
 
   useEffect(() => {
     try {
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3615380460314119",
+        enable_page_level_ads: true
+      });
     }
     catch (e) {
       console.error(e)
