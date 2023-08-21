@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 
-import { UploadFile } from 'components/domain'
+import { AdsComponent, UploadFile } from 'components/domain'
 import { Card, Loading } from 'components/ui'
 import openai from 'lib/openai'
 import supabase from 'lib/api'
@@ -170,6 +170,7 @@ function TranscriptPage() {
         />
       )}
 
+      <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
       <div className="flex mt-8 flex-col-reverse items-center gap-2 md:flex-row md:justify-around">
         <p className="max-w-lg">Transcreva seu áudio em texto. Use a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.</p>
 
@@ -179,6 +180,8 @@ function TranscriptPage() {
           <li>Transcreva áudios de qualquer sotaque</li> 
         </ul>
       </div>
+      <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
+      <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
     </div>
   )
 }
