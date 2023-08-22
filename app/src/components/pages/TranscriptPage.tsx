@@ -5,6 +5,7 @@ import { Card, Loading } from 'components/ui'
 import openai from 'lib/openai'
 import supabase from 'lib/api'
 import useSession from 'hooks/useSession'
+import { AiFillCheckCircle, AiFillLike } from 'react-icons/ai'
 
 const { speechToText } = openai
 
@@ -172,13 +173,43 @@ function TranscriptPage() {
       )}
 
       <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
-      <div className="flex mt-8 flex-col-reverse items-center gap-2 md:flex-row md:justify-around">
-        <p className="max-w-lg">Transcreva seu áudio em texto. Use a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.</p>
+      <div className="flex justify-between w-full sm:mx-auto sm:mb-2 -mx-2">
+        <div className="p-2 sm:w-1/2 w-full">
+          <div className="bg-gray-100 dark:bg-gray-800 rounded flex gap-2 p-4 h-full items-center">
+            <AiFillLike className="text-indigo-500 dark:text-white" size="4rem"/>
+            <span className="title-font font-medium dark:text-white">Transcreva seu áudio em texto. Use a tecnologia para transformar seus áudios em texto de forma rápida e prática. Não importa qual seja a língua ou o sotaque, nós entendemos e transformamos em texto.</span>
+          </div>
+        </div>
 
-        <ul className="flex flex-col items-start list-disc">
-          <li>Transcreva áudios de até 25Mb</li>
-          <li>Transcreva áudios de qualquer língua</li>
-          <li>Transcreva áudios de qualquer sotaque</li> 
+        <ul className="flex flex-col items-start w-fit-content">
+          <li className="w-80">
+            <div className="p-2 w-full">
+              <div className="bg-gray-100 dark:bg-gray-800 rounded flex gap-2 p-4 h-full w-96 items-center">
+                <AiFillCheckCircle className="text-indigo-500 dark:text-white" />
+                <span className="title-font font-medium dark:text-white">Transcreva áudios de até 25Mb</span>
+              </div>
+            </div>
+          </li>
+          <li className="w-full">
+            <div className="p-2 w-full">
+              <div className="bg-gray-100 dark:bg-gray-800 rounded flex gap-2 p-4 h-full w-96 items-center">
+                <AiFillCheckCircle className="text-indigo-500 dark:text-white" />
+                <span className="title-font font-medium dark:text-white">
+                  Entendemos até 30 línguas diferentes
+                </span>
+              </div>
+            </div>
+          </li>
+          <li className="w-full">
+            <div className="p-2 w-full">
+              <div className="bg-gray-100 dark:bg-gray-800 rounded flex gap-2 p-4 h-full w-96 items-center">
+                <AiFillCheckCircle className="text-indigo-500 dark:text-white" />
+                <span className="title-font font-medium dark:text-white">
+                  Transcrição com inteligência artificial
+                </span>
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
       <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
@@ -192,8 +223,5 @@ function TranscriptPage() {
 function blobToFile(theBlob: Blob, fileName: string) {
   return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
 }
-
-
-
 
 export default TranscriptPage

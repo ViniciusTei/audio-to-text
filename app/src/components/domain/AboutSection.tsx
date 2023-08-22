@@ -21,7 +21,7 @@ function AboutSection() {
                 <AiFillApi size="2rem"/>
               </div>
               <div className="flex-grow">
-                <h2 className="text-white text-lg title-font font-medium mb-3">
+                <h2 className="dark:text-white text-lg title-font font-medium mb-3">
                   Inteliência artificial
                 </h2>
                 <p className="leading-relaxed text-base text-gray-600 dark:text-gray-100">
@@ -34,7 +34,7 @@ function AboutSection() {
                 <AiFillRead size="2rem"/>
               </div>
               <div className="flex-grow">
-                <h2 className="text-white text-lg title-font font-medium mb-3">
+                <h2 className="dark:text-white text-lg title-font font-medium mb-3">
                   Fácil de usar
                 </h2>
                 <p className="leading-relaxed text-base text-gray-600 dark:text-gray-100">
@@ -47,7 +47,7 @@ function AboutSection() {
                 <AiFillDollarCircle size="2rem"/>
               </div>
               <div className="flex-grow">
-                <h2 className="text-white text-lg title-font font-medium mb-3">
+                <h2 className="dark:text-white text-lg title-font font-medium mb-3">
                   Barato
                 </h2>
                 <p className="leading-relaxed text-base text-gray-600 dark:text-gray-100">
