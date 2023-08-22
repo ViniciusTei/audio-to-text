@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 
-import { AdsComponent, UploadFile } from 'components/domain'
+import { AboutSection, AdsComponent, PricingSection, UploadFile } from 'components/domain'
 import { Card, Loading } from 'components/ui'
 import openai from 'lib/openai'
 import supabase from 'lib/api'
@@ -143,6 +143,7 @@ function TranscriptPage() {
       {!loading && !text && <UploadFile onUpload={handleTranscriptFile} />}
 
       {loading && (
+
         <div className="flex flex-col items-center justify-center gap-4 text-lg">
           <Loading/>
         
@@ -181,7 +182,9 @@ function TranscriptPage() {
         </ul>
       </div>
       <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
+      <AboutSection />
       <AdsComponent dataAdSlot='f08c47fec0942fa0'/>
+      <PricingSection />
     </div>
   )
 }
