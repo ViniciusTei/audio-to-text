@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { HomePage, PrivacyPage, ProfilePage, TranscriptPage } from 'components/pages'
 import { AppHeader } from 'components/domain'
 import { Analytics } from '@vercel/analytics/react'
@@ -24,6 +24,12 @@ function App() {
         </a>
         <p className="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2023 TranscreveAi —
           <a href="https://github.com/ViniciusTei" className="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@ViniciusTei</a>
+        </p>
+
+        <p className="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">
+          <Link to="/privacidade" className="text-gray-500 ml-1">
+            Política de privacidade
+          </Link>
         </p>
       </div>
     </footer>
