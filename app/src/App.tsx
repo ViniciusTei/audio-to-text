@@ -27,7 +27,7 @@ function App() {
         </p>
       </div>
     </footer>
-    <Analytics />
+    {import.meta.env.PROD && <Analytics />}
   </main>
   )
 }

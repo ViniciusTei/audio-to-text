@@ -18,7 +18,7 @@ function LoginButton() {
           />
 
           {currSession.user.user_metadata.name}
-          <span role="button" className="text-4xl ml-4 cursor-pointer" title="Sair" onClick={logOut}>
+          <span role="button" className="text-4xl ml-4 cursor-pointer text-gray-600 dark:text-gray-100" title="Sair" onClick={logOut}>
             <AiOutlineLogout size="1.2rem" />
           </span>
         </Link>
@@ -30,7 +30,7 @@ function LoginButton() {
   return (
     <button 
       onClick={() => logIn()} 
-      className="text-sm font-semibold leading-6 text-gray-100 flex items-center gap-2"
+      className="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-100 flex items-center gap-2"
     >
       Entrar <AiOutlineLogin size="1.2rem"/>
     </button>

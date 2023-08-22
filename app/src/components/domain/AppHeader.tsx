@@ -15,7 +15,7 @@ function AppHeader() {
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="sr-only text-gray-100">TranscreveAI</span>
+            <span className="sr-only text-gray-600 dark:text-gray-100">TranscreveAI</span>
             <img className="h-8 w-auto" src="https://nnfvmpgnudspenaftses.supabase.co/storage/v1/object/public/audio/logo/ic_audio_xl.png" alt="App Logo" />
           </Link>
         </div>
@@ -31,10 +31,10 @@ function AppHeader() {
             </svg>
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          <Link to="/audio" className="text-sm font-semibold leading-6 text-gray-100">Transcrever</Link>
-          <Link to="/#pricing" className="text-sm font-semibold leading-6 text-gray-100">Preços</Link>
-          <Link to={{ pathname: '/', hash: '#about' }} className="text-sm font-semibold leading-6 text-gray-100">Sobre</Link>
+        <div className="hidden lg:flex lg:gap-x-12 text-gray-600 dark:text-gray-100">
+          <Link to="/audio" className="text-sm font-semibold leading-6">Transcrever</Link>
+          <Link to="/#pricing" className="text-sm font-semibold leading-6">Preços</Link>
+          <Link to={{ pathname: '/', hash: '#about' }} className="text-sm font-semibold leading-6">Sobre</Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <LoginButton />
