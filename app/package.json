@@ -8,7 +8,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "supabase": "supabase functions deploy",
-    "postbuild": "react-snap"
+    "snap": "react-snap"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.1.2",
