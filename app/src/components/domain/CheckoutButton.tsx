@@ -1,11 +1,18 @@
 import React from 'react'
 import supabase from 'lib/api'
+import useSession from 'hooks/useSession'
 
 function CheckoutButton() {
+  const {session, logIn} = useSession()
   async function handleCheckout() {
     if (!import.meta.env.VITE_STRIPE_PRICE_ID) {
       throw new Error('Missing Stripe Price ID')
     }
+
+    if (!session) {
+      await logIn(window.location.href)
+    }
+
     //call stripe checkout
     const { data, error } = await supabase.functions.invoke('checkout', {
       body: {
